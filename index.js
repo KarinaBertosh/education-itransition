@@ -5,17 +5,21 @@ const email = "cherrycake246@gmail.com";
 const hashAll = [];
 
 const folder = fs.readdir("files", (err, files) => {
-  const buff = fs.readFileSync("index.js");
   files.forEach((f) => {
-    const hash = crypto.createHash("sha3-256").update(f).digest("hex");
+    let fileContent = fs.readFileSync(
+      `E:/itransition/education-itransition/files/${f}`
+    );
+    const hash = crypto
+      .createHash("sha3-256")
+      .update(fileContent)
+      .digest("hex");
     hashAll.push(hash);
   });
   const handledHash = hashAll
-    .sort((a, b) => a - b)
+    .sort()
     .join("")
     .concat(email)
     .toLowerCase();
-  console.log("ggg", handledHash);
   const result = crypto
     .createHash("sha3-256")
     .update(handledHash)
