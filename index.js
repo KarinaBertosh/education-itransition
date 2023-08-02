@@ -10,7 +10,12 @@ const folder = fs.readdir("files", (err, files) => {
     const hash = crypto.createHash("sha3-256").update(f).digest("hex");
     hashAll.push(hash);
   });
-  const handledHash = hashAll.sort().join().concat(email);
+  const handledHash = hashAll
+    .sort((a, b) => a - b)
+    .join("")
+    .concat(email)
+    .toLowerCase();
+  console.log("ggg", handledHash);
   const result = crypto
     .createHash("sha3-256")
     .update(handledHash)
