@@ -30,4 +30,9 @@ export class Menu {
         console.log('help');
     }
   }
+
+  renderStepRandom() {
+    const randomKey = Math.random(this.args);
+    return this.steps.randomKey;
+  }
 }

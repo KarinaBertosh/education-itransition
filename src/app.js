@@ -23,14 +23,15 @@ export class App {
       output: process.stdout,
     });
 
-    this.computer.getHmac();
+    this.computer.makeMove(this.args);
+    const currentHmac = this.computer.getHmac();
     this.menu.render();
     this.enterMove();
 
     rl.on('line', async (command) => {
       const step = this.menu.renderStep(command);
       if (!step) this.menu.render();
-      this.yourMove(step);
+      // this.yourMove(step);
     });
   }
 }
