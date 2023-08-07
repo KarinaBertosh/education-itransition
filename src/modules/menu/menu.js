@@ -26,7 +26,7 @@ export class Menu {
     console.log(this.menu.join('\n'));
   }
 
-  renderStep(command) {
+  renderStepUser(command) {
     if (this.steps[`${command}`]) {
       return this.steps[`${command}`];
     }

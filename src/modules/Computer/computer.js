@@ -16,5 +16,6 @@ export class Computer {
 
   getStep() {
     console.log(`Computer move: ${this.step}`);
+    return this.step;
   }
 }

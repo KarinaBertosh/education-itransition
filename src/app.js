@@ -1,9 +1,11 @@
 import readline from 'readline';
 import { Menu } from './modules/menu/menu.js';
 import { Computer } from './modules/Computer/computer.js';
+import { Game } from './modules/game/game.js';
 
 export class App {
   computer = new Computer();
+
   constructor(args) {
     this.args = args;
     this.menu = new Menu(this.args);
@@ -29,10 +31,12 @@ export class App {
     this.enterMove();
 
     rl.on('line', async (command) => {
-      const step = this.menu.renderStep(command);
-      if (step) {
-        this.yourMove(step);
-        this.computer.getStep()
+      const stepUser = this.menu.renderStepUser(command);
+      if (stepUser) {
+        this.yourMove(stepUser);
+        const stepComputer = this.computer.getStep();
+        this.game = new Game(stepUser, stepComputer);
+        this.game.getResult(this.menu.steps);
       } else {
         this.menu.render();
       }
