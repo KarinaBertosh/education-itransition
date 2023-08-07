@@ -16,14 +16,9 @@ export class RatesTable {
       if (err) {
         console.log(err);
       } else {
-        const sql =
-          'CREATE TABLE IF NOT EXISTS myTable (id int, name varchar(10))';
+        const sql = 'CREATE TABLE IF NOT EXISTS UserPC (UserPC varchar(20))';
         connection.query(sql, (err, result) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log('connected');
-          }
+          if (err) console.log(err);
         });
       }
     });
