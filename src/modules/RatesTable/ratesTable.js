@@ -1,26 +1,15 @@
-import mysql from 'mysql2';
-
 export class RatesTable {
   render(args) {
-    this.stepUser = args;
-    this.stepComp = args;
+    let arr = [
+      { 1: 1, firstName: 'John', lastName: 'Smith', height: 180 },
+      { 2: 2, firstName: 'Jane', lastName: 'Doe', height: 170 },
+    ];
 
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'karina2002',
-      database: 'msDb',
-    });
+    // let arrNoIndex = arr.reduce((acc, { id, firstName, ...x }) => {
+    //   acc[firstName] = x;
+    //   return acc;
+    // }, {});
 
-    connection.connect((err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const sql = 'CREATE TABLE IF NOT EXISTS UserPC (UserPC varchar(20))';
-        connection.query(sql, (err, result) => {
-          if (err) console.log(err);
-        });
-      }
-    });
+    console.table(arr);
   }
 }
