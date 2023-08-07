@@ -15,4 +15,8 @@ export class Hmac {
       .digest('hex');
     return this.hmac;
   }
+
+  getKey() {
+    return console.log(`HMAC key: ${this.key}`);
+  }
 }

@@ -20,4 +20,9 @@ export class Game {
   getIndexStep(entity) {
     return Object.keys(this.steps).find((key) => this.steps[key] === entity);
   }
+
+  goodbye() {
+    console.log('Game over');
+    process.exit();
+  }
 }

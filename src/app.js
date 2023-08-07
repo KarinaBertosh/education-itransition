@@ -2,9 +2,11 @@ import readline from 'readline';
 import { Menu } from './modules/menu/menu.js';
 import { Computer } from './modules/Computer/computer.js';
 import { Game } from './modules/game/game.js';
+import { Hmac } from './modules/hmac/hmac.js';
 
 export class App {
   computer = new Computer();
+  hmac = new Hmac();
 
   constructor(args) {
     this.args = args;
@@ -37,6 +39,8 @@ export class App {
         const stepComputer = this.computer.getStep();
         this.game = new Game(stepUser, stepComputer);
         this.game.getResult(this.menu.steps);
+        this.hmac.getKey();
+        this.game.goodbye();
       } else {
         this.menu.render();
       }
