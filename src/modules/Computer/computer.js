@@ -2,8 +2,7 @@ import { Hmac } from '../hmac/hmac.js';
 import { Menu } from '../menu/menu.js';
 
 export class Computer {
-  secureHmac = new Hmac();
-  hmac = this.secureHmac.create(this.step);
+  hmac = new Hmac();
 
   makeMove(args) {
     this.menu = new Menu(args);
@@ -11,7 +10,7 @@ export class Computer {
   }
 
   getHmac() {
-    console.log(`HMAC: ${this.hmac}`);
+    console.log(`HMAC: ${this.hmac.create(this.step)}`);
   }
 
   getStep() {

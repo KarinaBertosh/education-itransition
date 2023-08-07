@@ -28,7 +28,7 @@ export class App {
     });
 
     this.computer.makeMove(this.args);
-    const currentHmac = this.computer.getHmac();
+    this.computer.getHmac();
     this.menu.render();
     this.enterMove();
 
@@ -40,7 +40,7 @@ export class App {
         this.game = new Game(stepUser, stepComputer);
         this.game.getResult(this.menu.steps);
         this.hmac.getKey();
-        this.game.goodbye();
+        this.game.getGameOver();
       } else {
         this.menu.render();
       }
