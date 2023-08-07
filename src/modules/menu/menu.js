@@ -15,12 +15,19 @@ export class Menu {
     this.menu.push('0 - exit');
     this.menu.push('? - help');
 
-    return this.menu.join('\n');
+    console.log(this.menu.join('\n'));
   }
 
   renderStep(command) {
     if (this.steps[`${command}`]) {
       return this.steps[`${command}`];
+    }
+    switch (command) {
+      case '0':
+        console.log('Game over!');
+        process.exit();
+      case '?':
+        console.log('help');
     }
   }
 }
