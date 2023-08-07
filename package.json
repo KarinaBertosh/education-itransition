@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "mysql": "github:mysqljs/mysql",
+    "mysql2": "^3.6.0"
   },
   "devDependencies": {
     "@types/node": "^16.0.0",

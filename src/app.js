@@ -38,7 +38,7 @@ export class App {
       if (command === '?') {
         this.ratesTable.render(this.args);
       } else {
-        const stepUser = this.menu.renderStepUser(command);
+        const stepUser = this.menu.renderStepUser(this.args);
         if (stepUser) {
           this.yourMove(stepUser);
           const stepComputer = this.computer.getStep();

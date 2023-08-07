@@ -25,10 +25,6 @@ export class Menu {
     this.menu.push('? - help');
   }
 
-  getSteps() {
-    return this.steps;
-  }
-
   render() {
     this.create();
     console.log(this.menu.join('\n'));
