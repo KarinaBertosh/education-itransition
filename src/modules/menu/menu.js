@@ -6,7 +6,12 @@ export class Menu {
     this.args = args;
   }
 
-  render() {
+  clear() {
+    this.menu = ['Available moves: '];
+  }
+
+  create() {
+    this.clear();
     this.args.forEach((e, i) => {
       this.menu.push(`${i + 1} - ${e}`);
       this.steps[`${i + 1}`] = e;
@@ -14,7 +19,10 @@ export class Menu {
 
     this.menu.push('0 - exit');
     this.menu.push('? - help');
+  }
 
+  render() {
+    this.create();
     console.log(this.menu.join('\n'));
   }
 
@@ -32,7 +40,8 @@ export class Menu {
   }
 
   renderStepRandom() {
-    const randomKey = Math.random(this.args);
-    return this.steps.randomKey;
+    this.create();
+    const randomKey = Math.floor(Math.random() * (this.args.length - 1)) + 1;
+    return this.steps[`${randomKey}`];
   }
 }

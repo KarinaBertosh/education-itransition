@@ -30,8 +30,12 @@ export class App {
 
     rl.on('line', async (command) => {
       const step = this.menu.renderStep(command);
-      if (!step) this.menu.render();
-      // this.yourMove(step);
+      if (step) {
+        this.yourMove(step);
+        this.computer.getStep()
+      } else {
+        this.menu.render();
+      }
     });
   }
 }
