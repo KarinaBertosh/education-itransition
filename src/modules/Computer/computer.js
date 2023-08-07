@@ -1,5 +1,5 @@
-import { Hmac } from '../hmac/hmac.js';
-import { Menu } from '../menu/menu.js';
+import { Hmac } from '../Hmac/hmac.js';
+import { Menu } from '../Menu/menu.js';
 
 export class Computer {
   hmac = new Hmac();

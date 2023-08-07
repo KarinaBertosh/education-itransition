@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { Key } from '../key/key.js';
+import { Key } from '../Key/key.js';
 
 export class Hmac {
   secureKey = new Key();

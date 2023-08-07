@@ -1,12 +1,14 @@
 import readline from 'readline';
-import { Menu } from './modules/menu/menu.js';
+import { Menu } from './modules/Menu/menu.js';
 import { Computer } from './modules/Computer/computer.js';
-import { Game } from './modules/game/game.js';
-import { Hmac } from './modules/hmac/hmac.js';
+import { Game } from './modules/Game/game.js';
+import { Hmac } from './modules/Hmac/hmac.js';
+import { RatesTable } from './modules/RatesTable/ratesTable.js';
 
 export class App {
   computer = new Computer();
   hmac = new Hmac();
+  ratesTable = new RatesTable();
 
   constructor(args) {
     this.args = args;
@@ -33,16 +35,20 @@ export class App {
     this.enterMove();
 
     rl.on('line', async (command) => {
-      const stepUser = this.menu.renderStepUser(command);
-      if (stepUser) {
-        this.yourMove(stepUser);
-        const stepComputer = this.computer.getStep();
-        this.game = new Game(stepUser, stepComputer);
-        this.game.getResult(this.menu.steps);
-        this.hmac.getKey();
-        this.game.getGameOver();
+      if (command === '?') {
+        this.ratesTable.render(this.args);
       } else {
-        this.menu.render();
+        const stepUser = this.menu.renderStepUser(command);
+        if (stepUser) {
+          this.yourMove(stepUser);
+          const stepComputer = this.computer.getStep();
+          this.game = new Game(stepUser, stepComputer);
+          this.game.getResult(this.menu.steps);
+          this.hmac.getKey();
+          this.game.getGameOver();
+        } else {
+          this.menu.render();
+        }
       }
     });
   }

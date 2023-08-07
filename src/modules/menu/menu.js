@@ -1,6 +1,10 @@
+import { Game } from '../Game/game.js';
+import { RatesTable } from '../RatesTable/ratesTable.js';
+
 export class Menu {
   steps = {};
   menu = ['Available moves: '];
+  game = new Game();
 
   constructor(args) {
     this.args = args;
@@ -21,22 +25,20 @@ export class Menu {
     this.menu.push('? - help');
   }
 
+  getSteps() {
+    return this.steps;
+  }
+
   render() {
     this.create();
     console.log(this.menu.join('\n'));
   }
 
-  renderStepUser(command) {
-    if (this.steps[`${command}`]) {
-      return this.steps[`${command}`];
+  renderStepUser(cmd) {
+    if (this.steps[`${cmd}`] && cmd !== '?') {
+      return this.steps[`${cmd}`];
     }
-    switch (command) {
-      case '0':
-        console.log('Game over!');
-        process.exit();
-      case '?':
-        console.log('help');
-    }
+    if (cmd === '0') this.game.getGameOver();
   }
 
   renderStepRandom() {
