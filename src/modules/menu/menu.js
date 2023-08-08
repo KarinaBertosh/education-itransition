@@ -34,7 +34,7 @@ export class Menu {
     if (this.steps[`${cmd}`] && cmd !== '?') {
       return this.steps[`${cmd}`];
     }
-    if (cmd === '0') this.game.getGameOver();
+    if (cmd === '0') this.game.closeGame();
   }
 
   renderStepRandom() {

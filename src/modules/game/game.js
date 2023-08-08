@@ -21,7 +21,7 @@ export class Game {
     return Object.keys(this.steps).find((key) => this.steps[key] === entity);
   }
 
-  getGameOver() {
+  closeGame() {
     console.log('Game over');
     process.exit();
   }

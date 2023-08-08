@@ -45,7 +45,7 @@ export class App {
         this.game = new Game(stepUser, stepComputer);
         this.game.getResult(this.menu.steps);
         this.hmac.getKey();
-        this.game.getGameOver();
+        this.game.closeGame();
       } else {
         this.menu.render();
       }
