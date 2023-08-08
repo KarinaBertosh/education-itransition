@@ -1,15 +1,25 @@
 export class RatesTable {
   render(args) {
-    let arr = [
-      { 1: 1, firstName: 'John', lastName: 'Smith', height: 180 },
-      { 2: 2, firstName: 'Jane', lastName: 'Doe', height: 170 },
-    ];
+    const renderTable = (rows, columns) => {
+      var arr = {};
 
-    // let arrNoIndex = arr.reduce((acc, { id, firstName, ...x }) => {
-    //   acc[firstName] = x;
-    //   return acc;
-    // }, {});
+      args.forEach((e, ind) => {
+        args.forEach((i, index) => {
+          arr[i] = new Array();
+          args.forEach((j, index) => {
+            i === j
+              ? (arr[i][j] = 'Draw')
+              : i > j && i != j
+              ? (arr[i][j] = 'Lose')
+              : (arr[i][j] = 'Win');
+          });
+        });
+      });
 
-    console.table(arr);
+      return arr;
+    };
+
+    const table = renderTable(args.length, args.length);
+    console.table(table);
   }
 }
